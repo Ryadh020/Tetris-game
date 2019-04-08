@@ -45,9 +45,11 @@ function drawBox(x,y,color) {
 
         // CREATE PART ////////////////////////////////////////////
 
-const tetrmino = [
-
-[ [1,1,0],[0,1,1],[0,0,0] ],
+const z = [
+        // Z //
+[   [1,1,0],
+    [0,1,1],
+    [0,0,0] ],
 
 [   [0,0,1],
     [0,1,1],
@@ -61,10 +63,78 @@ const tetrmino = [
     [1,1,0],
     [0,1,0] ],
 
-[   [0,1,1],
-    [1,1,0],
+]
+
+const l = [
+    // L //
+[   [1,0,0],
+    [1,0,0],
+    [1,1,1] ],
+
+[   [0,0,1],
+    [0,0,1],
+    [1,1,1] ],
+
+[   [1,1,1],
+    [0,0,1],
+    [0,0,1] ],
+
+[   [1,1,1],
+    [1,0,0],
+    [1,0,0] ],
+
+]
+
+const i = [
+    // L //
+[   [0,1,0],
+    [0,1,0],
+    [0,1,0] ],
+
+[   [0,0,0],
+    [1,1,1],
     [0,0,0] ]
-                
+
+]
+
+const s = [
+    // L //
+[   [0,1,1],
+    [0,1,0],
+    [1,1,0] ],
+
+[   [1,0,0],
+    [1,1,1],
+    [0,0,1] ],
+
+[   [1,1,0],
+    [0,1,0],
+    [0,1,1] ],
+
+[   [1,0,0],
+    [1,1,1],
+    [0,0,1] ],
+
+]
+
+const t = [
+    // L //
+[   [1,1,1],
+    [0,1,0],
+    [0,1,0] ],
+
+[   [0,0,1],
+    [1,1,1],
+    [0,0,1] ],
+
+[   [0,1,0],
+    [0,1,0],
+    [1,1,1] ],
+
+[   [1,0,0],
+    [1,1,1],
+    [1,0,0] ],
+
 ]
         // DRAW PART //////////////////////////////////////////////
 
@@ -157,14 +227,19 @@ const tetrmino = [
         
                 /* ~~~~~~~ Pice ~~~~~~*/
             (function setup(){
+                // choose a random piece //
+            const teterminoes = [ [z,"red"], [l,"green"], [s,"blue"], [i,"yellowgreen"], [t,"yellow"] ];
 
-            let z = new Piece (tetrmino,"yellowgreen");
-             
+            let randomN = Math.floor(Math.random()*teterminoes.length);
+            
+            let newPeice = new Piece(teterminoes[randomN][0],teterminoes[randomN][1]);
+
+                // drop pieces //
             window.setInterval( () => {
-                if(!z.collision(0,1,z.activeTeter)) {
-                    z.unDraw();
-                    z.y ++;
-                    z.draw(); 
+                if(!newPeice.collision(0,1,newPeice.activeTeter)) {
+                    newPeice.unDraw();
+                    newPeice.y ++;
+                    newPeice.draw(); 
                 }            
             }, 500);
 
@@ -174,16 +249,16 @@ const tetrmino = [
                 console.log(key);
                          
                 if(key === 37) {
-                    z.moveLeft();
+                    newPeice.moveLeft();
                 }
                 if(key === 39) {
-                    z.moveRight();
+                    newPeice.moveRight();
                 }
                 if(key === 40) {
-                    z.moveDown();
+                    newPeice.moveDown();
                 }
                 if(key === 38) {
-                    z.rotate();
+                    newPeice.rotate();
                 }
             });
             }());

@@ -197,14 +197,14 @@ const t = [
                     this.draw(); 
                 }
             }   
-            this.moveRight =function() {
+            this.moveRight = function() {
                 if(!this.collision(1,0,this.activeTeter)) {
                     this.unDraw();
                     this.x ++ 
                     this.draw();
                 }
             }   
-            this.rotate =function() {
+            this.rotate = function() {
                 let nextPattern = this.teter[(this.teterPosition +1 ) % this.teter.length];
                 let kick = 0;
 
@@ -221,9 +221,22 @@ const t = [
                     this.teterPosition = (this.teterPosition + 1 ) % this.teter.length;
                     this.activeTeter = this.teter[this.teterPosition];
                     this.draw();
-                    }
-                }    
-            }
+                }
+            }  
+            this.lock = function() {
+                for (let y =0; y<this.activeTeter.length; y++) {
+                    for(let x=0; x<this.activeTeter.length; x++) {
+                        if(!this.activeTeter[y][x]) {continue;}
+                        if(this.y + y < 0) {
+                            gameOver = true;
+                            alert("GAME OVER");
+                            break;
+                        }
+                        board[this.y + y][this.x + x] = this.color;
+            }  
+        }
+    }
+        }
         
                 /* ~~~~~~~ Pice ~~~~~~*/
 
@@ -242,6 +255,7 @@ const t = [
                 if(!newPeice.collision(0,1,newPeice.activeTeter)) {
                     newPeice.moveDown(); 
                 }  else {
+                    newPeice.lock();
                     newPeice = randomPiece();
                 }   
             }, 500);   

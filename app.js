@@ -9,7 +9,8 @@ const SQ = 20;
 const white = "gray";
 
 let board =[];
-
+let gameOver = true;
+let score = 0;
 
 // I. BUILD the GAME BOARD : //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -228,15 +229,37 @@ const t = [
                     for(let x=0; x<this.activeTeter.length; x++) {
                         if(!this.activeTeter[y][x]) {continue;}
                         if(this.y + y < 0) {
-                            gameOver = true;
-                            alert("GAME OVER");
+                            gameOver = false;
+                            /*alert("GAME OVER");*/
                             break;
                         }
                         board[this.y + y][this.x + x] = this.color;
-            }  
-        }
-    }
-        }
+                    }  
+                }
+                            /* remove full rows */
+                for(r = 0; r < ROWS; r++){
+                    let isRowFull = true;
+                        for( c = 0; c < COLUMNS; c++){
+                            isRowFull = isRowFull && (board[r][c] != white);
+                        }
+                        if(isRowFull){
+                            for( y = r; y > 1; y--){
+                                for( c = 0; c < COLUMNS; c++){
+                                    board[y][c] = board[y-1][c];
+                                }
+                            }
+                            // the top row board[0][..] has no row above it
+                            for( c = 0; c < COLUMNS; c++){
+                                board[0][c] = white;
+                            }
+                            // increment the score
+                            score += 10;
+                        }
+                    }
+                            // update the board
+                            drawBoard();
+                }
+            }
         
                 /* ~~~~~~~ Pice ~~~~~~*/
 
@@ -257,8 +280,8 @@ const t = [
                 }  else {
                     newPeice.lock();
                     newPeice = randomPiece();
-                }   
-            }, 500);   
+                } if(!gameOver)  {stop;}
+            }, 400);   
 
                     // controle the piece //
             document.addEventListener("keydown", function(ev) {

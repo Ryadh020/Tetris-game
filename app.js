@@ -226,24 +226,28 @@ const t = [
             }
         
                 /* ~~~~~~~ Pice ~~~~~~*/
-            (function setup(){
+
                 // choose a random piece //
             const teterminoes = [ [z,"red"], [l,"green"], [s,"blue"], [i,"yellowgreen"], [t,"yellow"] ];
-
-            let randomN = Math.floor(Math.random()*teterminoes.length);
-            
-            let newPeice = new Piece(teterminoes[randomN][0],teterminoes[randomN][1]);
+                
+            function randomPiece() {
+                    let randomN = Math.floor(Math.random()*teterminoes.length);
+                    return new Piece(teterminoes[randomN][0],teterminoes[randomN][1]);
+                }
+            let newPeice = new Piece(teterminoes[0][0],teterminoes[0][1]);      
 
                 // drop pieces //
-            window.setInterval( () => {
+            function drop(){
+                 window.setInterval( () => {
                 if(!newPeice.collision(0,1,newPeice.activeTeter)) {
-                    newPeice.unDraw();
-                    newPeice.y ++;
-                    newPeice.draw(); 
-                }            
-            }, 500);
+                    newPeice.moveDown(); 
+                }  else {
+                    newPeice = randomPiece();
+                }   
+            }, 500);   
 
-            window.addEventListener("keydown", function(ev) {
+                    // controle the piece //
+            document.addEventListener("keydown", function(ev) {
 
                 const key = ev.keyCode;   
                 console.log(key);
@@ -261,7 +265,8 @@ const t = [
                     newPeice.rotate();
                 }
             });
-            }());
+            }
+            drop();
 
 // IV. MOVE the PICE :  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

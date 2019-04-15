@@ -2,7 +2,7 @@
     /*outline: 1px red solid;*/
 }
 body {
-    background-color: gray;
+    background-color: black;
     margin: 0;
 }
 
@@ -54,7 +54,6 @@ body {
     filter: blur(7px);
 }
 .c {
-
     position: absolute;
     width: 47px;
     height: 580px;
@@ -65,7 +64,6 @@ body {
     filter: blur(7px);
 }
 .d {
-
     position: absolute;
     width: 47px;
     height: 520px;
@@ -76,7 +74,6 @@ body {
     filter: blur(7px);
 }
 .f {
-
     position: absolute;
     width: 47px;
     height: 580px;
@@ -87,7 +84,6 @@ body {
     filter: blur(7px);
 }
 .e {
-
     position: absolute;
     width: 47px;
     height: 500px;
@@ -102,7 +98,74 @@ body {
     height: 100vh;
     
     background: linear-gradient(180deg, #7B00DB 0%, rgba(255, 255, 255, 0) 85.94%);
+    /*filter: blur(7px);*/
+ }
+
+ /* buttons //////////////////////////////////////*/
+ .start {
+    position: absolute;
+    width: 43px;
+    height: 18px;
+    left: 28px;
+    top: 55px;
+    
+    background: #000000;
     filter: blur(7px);
+ }
+ .strt {
+    position: absolute;
+    width: 53px;
+    height: 11px;
+    left: 307px;
+    top: 58px;
+    
+    font-family: Roboto Condensed;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: normal;
+    
+    color: #FFFFFF;
+    
+ }
+ .pause {
+    position: absolute;
+    width: 43px;
+    height: 18px;
+    left: 28px;
+    top: 106px;
+    
+    background: #000000;
+    filter: blur(7px);
+ }
+ .ps {
+    position: absolute;
+    width: 53px;
+    height: 11px;
+    left: 307px;
+    top: 58px;
+    
+    font-family: Roboto Condensed;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: normal;
+    
+    color: #FFFFFF;
+    
+ }
+ .score {
+    position: absolute;
+    width: 43px;
+    height: 18px;
+    left: 28px;
+    top: 157px;
+    
+    background: #000000;
+    filter: blur(7px);
+ }
+ .scr {
+
  }
 
  /* THE GAME ////////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -110,7 +173,7 @@ body {
     position: absolute;
     left: 31%;
     top: 5%;
-    border: 2px white solid;
+    border: 2px black solid;
 
 }
 
@@ -227,9 +290,9 @@ body {
      }
 }
 
-@media only screen and (max-width:445px) {
+@media only screen and (max-width:470px) {
     .canvas {
-        left: 14%;
+        left: 17%;
     }
     .left {
         flex: 3;

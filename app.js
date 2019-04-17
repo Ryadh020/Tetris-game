@@ -12,6 +12,16 @@ let board =[];
 let gameOver = true;
 let score = 0;
 
+// add buttons to the DOM :
+const start = document.querySelector(".start");
+const pause = document.querySelector(".pause");
+const button = document.querySelector(".score");
+    /*manipulation*/
+const sync = document.querySelector(".fa-sync-alt");
+const left = document.querySelector(".fa-arrow-circle-left");
+const down = document.querySelector(".fa-arrow-circle-down");
+const right = document.querySelector(".fa-arrow-circle-right");
+
 // I. BUILD the GAME BOARD : //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // CREATE PART ////////////////////////////////////////////
@@ -88,16 +98,15 @@ const l = [
 
 const i = [
     // i //
-[   [0,1,0],
-    [0,1,0],
-    [0,1,0],
-    [0,1,0] ],
+[   [0,1,0,0],
+    [0,1,0,0],
+    [0,1,0,0],
+    [0,1,0,0] ],
 
 [   [0,0,0,0],
     [1,1,1,1],
-    [0,1,0,0]
-]
-
+    [0,0,0,0]
+    [0,0,0,0] ]
 ]
 
 const s = [
@@ -272,6 +281,7 @@ const t = [
             }, 400);   
 
                     // controle the piece //
+                //keyboard keys:
             document.addEventListener("keydown", function(ev) {
 
                 const key = ev.keyCode;   
@@ -290,9 +300,22 @@ const t = [
                     newPeice.rotate();
                 }
             });
+                // buttons:
+            sync.addEventListener("click", function() {
+                newPeice.rotate();
+            });
+            left.addEventListener("click", function() {
+                newPeice.moveLeft();
+            });
+            down.addEventListener("click", function() {
+                newPeice.moveDown();
+            });
+            right.addEventListener("click", function() {
+                newPeice.moveRight();
+            });
             }
             drop();
 
+            
+
 // IV. MOVE the PICE :  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-

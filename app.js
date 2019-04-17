@@ -16,6 +16,8 @@ let score = 0;
 const start = document.querySelector(".start");
 const pause = document.querySelector(".pause");
 const button = document.querySelector(".score");
+let scor = document.querySelector(".scor");
+scor.textContent = score;
     /*manipulation*/
 const sync = document.querySelector(".fa-sync-alt");
 const left = document.querySelector(".fa-arrow-circle-left");
@@ -251,6 +253,7 @@ const t = [
                             }
                             // increment the score
                             score += 10;
+                            scor.textContent = score;
                         }
                     }
                             // update the board

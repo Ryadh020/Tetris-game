@@ -6,12 +6,11 @@
      <meta http-equiv="X-UA-Compatible" content="ie=edge">
      <title>Tertris Game</title>
      <link rel="stylesheet" href="style.css">
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
  </head>
  <body>
    <div class="container">
-
      <div class="bac left"></div>
-     
      <div class="bac center">
          <div class="a"></div>
          <div class="b"></div>
@@ -20,22 +19,22 @@
          <div class="f"></div>
          <div class="e"></div>
      </div>
-
      <div class="bac right">
-         <div class="start">
-             <p class="strt">START</p>
-         </div>
-         <div class="pause"></div>
-             <p class="ps">PAUSE</p>
-         <div class="score">
-             <p class="scr">SCORE</p>
-         </div>
-         <div class="00"></div>
+         <button class="start">START</button>
+         <button class="pause">PAUSE</button>
+         <button class="score">SCORE</button>
      </div>
-
      <div class="canvas">
          <canvas id="canvas" width="280" height="460" style="border: 1px black solid"></canvas>
      </div>
+     <div class="manipulation">
+        <i class="fas fa-sync-alt"></i>
+        <div class="other">
+            <i class="fas fa-arrow-circle-left"></i>
+            <i class="fas fa-arrow-circle-down"></i>
+            <i class="fas fa-arrow-circle-right"></i>
+        </div>
+    </div>
     
    </div>
      <script src="app.js"></script>
